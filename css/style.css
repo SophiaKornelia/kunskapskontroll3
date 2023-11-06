@@ -1,3 +1,29 @@
 .hide {
  display: none;
 }
+
+body {
+    background-image: url("../img/theatre-4023278_1920.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white; 
+    display: flex; 
+}
+
+.container {
+    min-height: 400px;
+    width: 400px;
+    background-color: rgb(178, 178, 243); 
+    margin: 0 auto; 
+    padding: 20px;
+    opacity: 0.8;
+    border-radius: 15%;
+}
+
+h2 {
+    color: black;
+}
+
+ul {
+    list-style: none;
+}
