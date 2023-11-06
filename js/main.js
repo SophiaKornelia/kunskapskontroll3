@@ -20,7 +20,6 @@ ul.addEventListener('click', async function (event) {
         
 
         btn3.addEventListener('click', async function () {
-            // const btn2Value = event.target.getAttribute('data-id');
 
             try {
 
@@ -30,13 +29,14 @@ ul.addEventListener('click', async function (event) {
                 }
 
                 const data = await episodes.json();
+                console.log(data);
 
                 let episodeList = "";
     
                 const name = data.name
                 const season = data.season
     
-                episodeList += `<li>${title} ${name} ${season} </li>`
+                episodeList += `<li>${title}<br>Season ${episodeInput1.value} episode ${episodeInput2.value} is called ${name}</li>`
     
                 ul.innerHTML = episodeList;
 
