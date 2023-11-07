@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- Behöver fortsätta felsöka vad som händer om avsnitt och serier inte finns-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Serie search</title>
     <link rel="stylesheet" href="./css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
-        <h2>Search for your serie</h2>
-        <input type="text" id="input-label">
-        <button id="search-btn">Search</button>
-        <ul id="ul"></ul>
-
+        <h1>Welcome!</h1>
+        <h2>Did you forget the name of your favourite episode? No worries, we got ya back!</h2>
+        <div class="search-container">
+            <h3>Search for your serie:</h3>
+            <input type="text" id="input-label" value="...">
+            <button id="search-btn">Search</button>
+        </div>
         <div class="search-episode-btn-container" class="hide">
-            <input type="text" id="episodeInput1">
+            <h3>Write in the season and episode to get the name!</h3>
+            <label>Season</label>
+            <input type="text" id="episodeInput1" ><br>
+            <label id="episode-Label2">Episode</label>
             <input type="text" id="episodeInput2">
             <button id="btn3">More info</button>
         </div>
+
+        <ul id="ul"></ul>
     </div>
+    <footer>
+        <p>This webbsite was created by the grace of the masterminds tvMaze over at <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></p>
+    </footer>
     <script src="js/main.js"></script>
 </body>
 
