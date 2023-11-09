@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Behöver fortsätta felsöka vad som händer om avsnitt och serier inte finns-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +12,10 @@
 
 <body>
     <div class="container">
-        <h1>Welcome!</h1>
-        <h2>Did you forget the name of your favourite episode? No worries, we got ya back!</h2>
+        <div id="header-container">
+            <h1>Welcome!</h1>
+            <h2>Did you forget the name of your favourite episode? No worries, we got ya back!</h2>
+        </div>
         <div class="search-container">
             <h3>Search for your serie:</h3>
             <input type="text" id="input-label" value="...">
@@ -22,16 +24,17 @@
         <div class="search-episode-btn-container" class="hide">
             <h3>Write in the season and episode to get the name!</h3>
             <label>Season</label>
-            <input type="text" id="episodeInput1" ><br>
+            <input type="text" id="episodeInput1"><br>
             <label id="episode-Label2">Episode</label>
             <input type="text" id="episodeInput2">
-            <button id="btn3">More info</button>
+            <button id="more-info-btn">More info</button>
         </div>
-
         <ul id="ul"></ul>
+        <button class="hide" id="new-search-btn">Search for a new serie</button>
     </div>
     <footer>
-        <p>This webbsite was created by the grace of the masterminds tvMaze over at <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></p>
+        <p>This webbsite was created by the grace of the masterminds tvMaze over at <a
+                href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></p>
     </footer>
     <script src="js/main.js"></script>
 </body>
