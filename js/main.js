@@ -1,30 +1,30 @@
+let headerContainer = document.getElementById('header-container');
+
+let searchContainer = document.querySelector('.search-container');
 let inputLabel = document.getElementById('input-label');
 let searchBtn = document.getElementById('search-btn');
+
 let searchEpisodeBtnContainer = document.querySelector('.search-episode-btn-container');
-let searchContainer = document.querySelector('.search-container');
-let ul = document.getElementById('ul');
-let headerContainer = document.getElementById('header-container');
-let title;
 let episodeInput1 = document.getElementById('episodeInput1');
 let episodeInput2 = document.getElementById('episodeInput2');
 let moreInfoBtn = document.getElementById('more-info-btn');
+
+let ul = document.getElementById('ul');
 let newSearchBtn = document.getElementById('new-search-btn');
+
+let title;
 let showId;
 
-searchEpisodeBtnContainer.classList.add('hide');
 inputLabel.value = "...";
+searchEpisodeBtnContainer.classList.add('hide');
 inputLabel.addEventListener('focus', function () {
 inputLabel.value = "";
-
 });
 
-const movieLink = 'https://api.tvmaze.com/search/shows?';
-
 searchBtn.addEventListener('click', async function () {
-
+    
     try {
-        const movieResponse = await fetch((movieLink + "q=" + inputLabel.value))
-        console.log(movieLink + "q=" + inputLabel.value);
+        const movieResponse = await fetch(`https://api.tvmaze.com/search/shows?q=${inputLabel.value}`)
 
         if (movieResponse.ok === false) {
             throw new Error(`HTTP error code: ${movieResponse.status}, HTTP error message: ${movieResponse.statusText}`);
@@ -32,17 +32,19 @@ searchBtn.addEventListener('click', async function () {
 
         const movieData = await movieResponse.json();
 
-        episodeInput1.value = "..."
+        episodeInput1.value = "...";
+        episodeInput2.value = "...";
+
         episodeInput1.addEventListener('focus', function () {
             episodeInput1.value = "";
             });
-
-        episodeInput2.value = "..."
+            
         episodeInput2.addEventListener('focus', function () {
             episodeInput2.value = "";
             });
-            
+
         let movieList = "";
+
 
         if (movieData.length === 0) {
             alert('This serie does not exist, try another search!');
@@ -57,7 +59,7 @@ searchBtn.addEventListener('click', async function () {
 
             showId = firstMovie.show.id;
 
-            movieList += `<li><h2>${title}  </h2> <img src="${image}"><br><br>
+            movieList = `<li><h2>${title}  </h2> <img src="${image}"><br><br>
             Premiered: ${premiered} <br><br> About:${summary} </li>`;
 
             searchEpisodeBtnContainer.classList.toggle('hide');
@@ -69,13 +71,13 @@ searchBtn.addEventListener('click', async function () {
 
     } catch (error) {
         console.log(error);
+        ul.innerHTML = "Ops something went wrong!"
     }
 });
 
 
 moreInfoBtn.addEventListener('click', async function () {
     try {
-
         const episodes = await fetch(`https://api.tvmaze.com/shows/${showId}/episodebynumber?season=${episodeInput1.value}&number=${episodeInput2.value}`);
         
         if (episodes.ok === false) {
@@ -83,14 +85,15 @@ moreInfoBtn.addEventListener('click', async function () {
         }
 
         const data = await episodes.json();
-
+        
         let episodeList = "";
-
+        
         const name = data.name
         const season = data.season
+        const episode = data.number
         const summary = data.summary
 
-        episodeList += `<li><h3>${title}</h3>Season ${episodeInput1.value} episode${episodeInput2.value} is called ${name}. <br><h4>A small summary about the episode:</h4>${summary}</li>`
+        episodeList += `<li><h3>${title}</h3>Season ${season} episode ${episode} is called ${name}. <br><h4>A small summary about the episode:</h4>${summary}</li>`
 
         ul.innerHTML = episodeList;
 
